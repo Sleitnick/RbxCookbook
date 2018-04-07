@@ -16,7 +16,7 @@ for filename in filenames:
 	filepath = join(src_dir, filename)
 	with open(filepath) as f:
 		source = f.read()
-		readme_src.append("----------\n\n## " + filename + "\n")
+		readme_src.append("----------\n\n### " + filename + "\n")
 		readme_src.append("```lua\n" + source + "\n```\n")
 
 # Write readme file:

@@ -2,7 +2,7 @@
 
 ----------
 
-## CylinderTerrain.lua
+### CylinderTerrain.lua
 
 ```lua
 -- Make cylinder terrain
@@ -83,7 +83,7 @@ DrawCylinder(32, 20, Enum.Material.Water)
 
 ----------
 
-## LinearInterpolation.lua
+### LinearInterpolation.lua
 
 ```lua
 -- Linear Interpolation (AKA Lerp)
@@ -96,7 +96,7 @@ end
 
 ----------
 
-## RoundNumbers.lua
+### RoundNumbers.lua
 
 ```lua
 -- Round 'x' to the nearest 'mult'
