@@ -31,7 +31,7 @@ function Create3DTable(size, defaultValue)
 end
 
 
-function DrawCylinder(radius, depth, material)
+function DrawCylinder(radius, depth, depthOffset, material, overrideExisting)
 
 	assert(radius % RESOLUTION == 0, "Radius must be positive and divisible by " .. RESOLUTION)
 	assert(radius >= RESOLUTION, "Radius must be greater or equal to " .. RESOLUTION)
@@ -44,8 +44,8 @@ function DrawCylinder(radius, depth, material)
 	local SQRT = math.sqrt
 
 	local region = Region3.new(
-		Vector3.new(-radius + 1, 0, -radius + 1),
-		Vector3.new(radius, depth, radius)
+		Vector3.new(-radius + 1, depthOffset, -radius + 1),
+		Vector3.new(radius, depth + depthOffset, radius)
 	):ExpandToGrid(RESOLUTION)
 
 	local size = Vector3.new(radius * 2, depth, radius * 2) / RESOLUTION
@@ -53,6 +53,8 @@ function DrawCylinder(radius, depth, material)
 
 	local materials = Create3DTable(size, AIR)
 	local occupancy = Create3DTable(size, 1)
+
+	local curMaterials, curOccupancy = workspace.Terrain:ReadVoxels(region, RESOLUTION)
 
 	for x = 1,sx do
 		local posX = (-sx * 0.5) + x
@@ -62,6 +64,10 @@ function DrawCylinder(radius, depth, material)
 			local mat = (rad > radius and AIR or material)
 			for y = 1,sy do
 				materials[x][y][z] = mat
+				if (not overrideExisting and rad > radius) then
+					materials[x][y][z] = curMaterials[x][y][z]
+					occupancy[x][y][z] = curOccupancy[x][y][z]
+				end
 			end
 		end
 	end
@@ -75,8 +81,15 @@ end
 
 
 -- EXAMPLE:
+-- Clear
 workspace.Terrain:Clear()
-DrawCylinder(32, 20, Enum.Material.Water)
+
+-- Water and bedrock:
+DrawCylinder(512, 4, 0, Enum.Material.Rock, true)
+DrawCylinder(512, 20, 4, Enum.Material.Water, true)
+
+-- Island
+DrawCylinder(128, 28, 4, Enum.Material.Sand, false)
 ```
 
 ----------
