@@ -35,8 +35,6 @@ function DrawCylinder(radius, depth, material)
 
 	assert(typeof(material) == "EnumItem" and material.EnumType == Enum.Material, "Material must be a Material enum value")
 
-	game:GetService("ChangeHistoryService"):SetWaypoint("CylinderTerrain")
-
 	local AIR = Enum.Material.Air
 	local SQRT = math.sqrt
 
@@ -64,6 +62,8 @@ function DrawCylinder(radius, depth, material)
 	end
 
 	workspace.Terrain:WriteVoxels(region, RESOLUTION, materials, occupancy)
+
+	game:GetService("ChangeHistoryService"):SetWaypoint("CylinderTerrain")
 
 end
 
