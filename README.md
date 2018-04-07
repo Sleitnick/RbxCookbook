@@ -1,7 +1,5 @@
 # RbxCookbook
 
-----------
-
 ### CylinderTerrain.lua
 
 ```lua
@@ -83,6 +81,7 @@ DrawCylinder(32, 20, Enum.Material.Water)
 
 ----------
 
+
 ### LinearInterpolation.lua
 
 ```lua
@@ -95,6 +94,7 @@ end
 ```
 
 ----------
+
 
 ### RoundNumbers.lua
 
