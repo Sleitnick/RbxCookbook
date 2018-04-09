@@ -8,7 +8,7 @@ print("Writing README file...")
 
 src_dir = "." + sep + "src"
 
-readme_src = ["# RbxCookbook\n"]
+readme_src = ["# RbxCookbook\n\nFeel free to submit a pull request with your own contributions!\n"]
 
 # Collect source code:
 (_, _, filenames) = walk(src_dir).next()

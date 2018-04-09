@@ -1,5 +1,7 @@
 # RbxCookbook
 
+Feel free to submit a pull request with your own contributions!
+
 ### CylinderTerrain.lua
 
 ```lua
@@ -85,11 +87,15 @@ end
 workspace.Terrain:Clear()
 
 -- Water and bedrock:
-DrawCylinder(512, 4, 0, Enum.Material.Rock, true)
-DrawCylinder(512, 20, 4, Enum.Material.Water, true)
+DrawCylinder(2048, 4, 0, Enum.Material.Rock, true)
+for i = 0,20,8 do
+	DrawCylinder(2048, 8, i + 4, Enum.Material.Water, i > 4)
+end
 
 -- Island
-DrawCylinder(128, 28, 4, Enum.Material.Sand, false)
+DrawCylinder(512, 16, 4, Enum.Material.Rock, false)
+DrawCylinder(512, 8, 20, Enum.Material.Sand, false)
+DrawCylinder(500, 8, 28, Enum.Material.Grass, false)
 ```
 
 ----------
@@ -104,6 +110,37 @@ DrawCylinder(128, 28, 4, Enum.Material.Sand, false)
 function Lerp(a, b, x)
 	return a + ((b - a) * x)
 end
+```
+
+----------
+
+
+### ModelCFramer.lua
+
+```lua
+-- SetPrimaryPartCFrame but avoids float errors via caching
+
+-- ExampleSetterFunction = ModelCFramer(workspace:WaitForChild("Model"))
+-- ExampleSetterFunction(CFrame.new(0, 5, 0))
+
+
+local function ModelCFramer(Model)
+	local Primary = Model.PrimaryPart or error("Model has no PrimaryPart")
+	local PrimaryCF = Primary.CFrame
+	local Cache = {}
+	for _, Desc in next, Model:GetDescendants() do
+		if Desc ~= Primary and Desc:IsA("BasePart") then
+			Cache[Desc] = PrimaryCF:toObjectSpace(Desc.CFrame)
+		end
+	end
+	return function(DesiredCFrame)
+		Primary.CFrame = DesiredCFrame
+		for Part, Offset in next, Cache do
+			Part.CFrame = DesiredCFrame * Offset
+		end
+	end
+end
+
 ```
 
 ----------
