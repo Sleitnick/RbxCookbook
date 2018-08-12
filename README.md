@@ -2,6 +2,12 @@
 
 Feel free to submit a pull request with your own contributions!
 
+### Snippets
+
+ - [CylinderTerrain.lua](#cylinderterrain)
+ - [LinearInterpolation.lua](#linearinterpolation)
+ - [ModelCFramer.lua](#modelcframer)
+ - [RoundNumbers.lua](#roundnumbers)
 ### CylinderTerrain.lua
 
 ```lua
@@ -152,6 +158,6 @@ end
 -- Round 'x' to the nearest 'mult'
 
 function Round(x, mult)
-	math.floor((x / mult) + 0.5) * mult
+	return math.floor((x / mult) + 0.5) * mult
 end
 ```

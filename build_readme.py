@@ -8,10 +8,22 @@ print("Writing README file...")
 
 src_dir = "." + sep + "src"
 
-readme_src = ["# RbxCookbook\n\nFeel free to submit a pull request with your own contributions!\n"]
+readme_src = ["# RbxCookbook\n", "Feel free to submit a pull request with your own contributions!\n"]
+
+# Get source files:
+(_, _, filenames) = walk(src_dir).next()
+
+# Create list:
+readme_src.append("### Snippets\n")
+for filename in filenames:
+	anchor_name = filename
+	dot = anchor_name.rfind(".")
+	if dot != -1:
+		anchor_name = anchor_name[:dot]
+	anchor_name = "".join(e for e in anchor_name if e.isalnum()).lower()
+	readme_src.append(" - [" + filename + "](#" + anchor_name + ")")
 
 # Collect source code:
-(_, _, filenames) = walk(src_dir).next()
 first = True
 for filename in filenames:
 	filepath = join(src_dir, filename)
