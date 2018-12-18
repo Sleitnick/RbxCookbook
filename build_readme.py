@@ -23,6 +23,8 @@ for filename in filenames:
 	anchor_name = "".join(e for e in anchor_name if e.isalnum()).lower()
 	readme_src.append(" - [" + filename + "](#" + anchor_name + ")")
 
+readme_src.append("");
+
 # Collect source code:
 first = True
 for filename in filenames:
