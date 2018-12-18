@@ -13,13 +13,16 @@ readme_src = ["# RbxCookbook\n", "Feel free to submit a pull request with your o
 # Get source files:
 (_, _, filenames) = walk(src_dir).next()
 
+def get_filename_without_ext(filename):
+	dot = filename.rfind(".")
+	if dot != -1:
+		filename = filename[:dot]
+	return filename
+
 # Create list:
 readme_src.append("### Snippets\n")
 for filename in filenames:
-	anchor_name = filename
-	dot = anchor_name.rfind(".")
-	if dot != -1:
-		anchor_name = anchor_name[:dot]
+	anchor_name = get_filename_without_ext(filename)
 	anchor_name = "".join(e for e in anchor_name if e.isalnum()).lower()
 	readme_src.append(" - [" + filename + "](#" + anchor_name + ")")
 
@@ -31,11 +34,12 @@ for filename in filenames:
 	filepath = join(src_dir, filename)
 	with open(filepath) as f:
 		source = f.read()
+		name = get_filename_without_ext(filename)
 		if not first:
 			readme_src.append("----------\n\n")
 		else:
 			first = False
-		readme_src.append("### " + filename + "\n")
+		readme_src.append("### " + name + "\n")
 		readme_src.append("```lua\n" + source + "\n```\n")
 
 # Write readme file:

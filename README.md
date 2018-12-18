@@ -11,7 +11,7 @@ Feel free to submit a pull request with your own contributions!
  - [ModelCFramer.lua](#modelcframer)
  - [RoundNumbers.lua](#roundnumbers)
 
-### CreateSignal.lua
+### CreateSignal
 
 ```lua
 -- Lightweight signal class that avoids the table-copying behavior of BindableEvents
@@ -47,7 +47,7 @@ end
 ----------
 
 
-### CylinderTerrain.lua
+### CylinderTerrain
 
 ```lua
 -- Make cylinder terrain
@@ -146,7 +146,7 @@ DrawCylinder(500, 8, 28, Enum.Material.Grass, false)
 ----------
 
 
-### LinearInterpolation.lua
+### LinearInterpolation
 
 ```lua
 -- Linear Interpolation (AKA Lerp)
@@ -160,7 +160,7 @@ end
 ----------
 
 
-### Map.lua
+### Map
 
 ```lua
 -- Remap 'n' from the old range (oldMin, oldMax) to the new range (min, max)
@@ -173,7 +173,7 @@ end
 ----------
 
 
-### ModelCFramer.lua
+### ModelCFramer
 
 ```lua
 -- SetPrimaryPartCFrame but avoids float errors via caching
@@ -204,7 +204,7 @@ end
 ----------
 
 
-### RoundNumbers.lua
+### RoundNumbers
 
 ```lua
 -- Round 'x' to the nearest 'mult'
