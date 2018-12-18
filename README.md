@@ -12,6 +12,7 @@ Feel free to submit a pull request with your own contributions!
  - [RoundNumbers.lua](#roundnumbers)
 
 ### CreateSignal
+[`CreateSignal.lua`](src/CreateSignal.lua)
 
 ```lua
 -- Lightweight signal class that avoids the table-copying behavior of BindableEvents
@@ -48,6 +49,7 @@ end
 
 
 ### CylinderTerrain
+[`CylinderTerrain.lua`](src/CylinderTerrain.lua)
 
 ```lua
 -- Make cylinder terrain
@@ -147,6 +149,7 @@ DrawCylinder(500, 8, 28, Enum.Material.Grass, false)
 
 
 ### LinearInterpolation
+[`LinearInterpolation.lua`](src/LinearInterpolation.lua)
 
 ```lua
 -- Linear Interpolation (AKA Lerp)
@@ -161,6 +164,7 @@ end
 
 
 ### Map
+[`Map.lua`](src/Map.lua)
 
 ```lua
 -- Remap 'n' from the old range (oldMin, oldMax) to the new range (min, max)
@@ -174,6 +178,7 @@ end
 
 
 ### ModelCFramer
+[`ModelCFramer.lua`](src/ModelCFramer.lua)
 
 ```lua
 -- SetPrimaryPartCFrame but avoids float errors via caching
@@ -205,6 +210,7 @@ end
 
 
 ### RoundNumbers
+[`RoundNumbers.lua`](src/RoundNumbers.lua)
 
 ```lua
 -- Round 'x' to the nearest 'mult'

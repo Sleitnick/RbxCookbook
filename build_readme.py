@@ -7,6 +7,7 @@ from os.path import join
 print("Writing README file...")
 
 src_dir = "." + sep + "src"
+link_dir = "src/"
 
 readme_src = ["# RbxCookbook\n", "Feel free to submit a pull request with your own contributions!\n"]
 
@@ -22,7 +23,8 @@ def get_filename_without_ext(filename):
 # Create list:
 readme_src.append("### Snippets\n")
 for filename in filenames:
-	anchor_name = get_filename_without_ext(filename)
+	name = get_filename_without_ext(filename)
+	anchor_name = name
 	anchor_name = "".join(e for e in anchor_name if e.isalnum()).lower()
 	readme_src.append(" - [" + filename + "](#" + anchor_name + ")")
 
@@ -35,11 +37,12 @@ for filename in filenames:
 	with open(filepath) as f:
 		source = f.read()
 		name = get_filename_without_ext(filename)
+		src_file_link = link_dir + filename
 		if not first:
 			readme_src.append("----------\n\n")
 		else:
 			first = False
-		readme_src.append("### " + name + "\n")
+		readme_src.append("### " + name + "\n[`" + filename + "`](" + src_file_link + ")\n")
 		readme_src.append("```lua\n" + source + "\n```\n")
 
 # Write readme file:
