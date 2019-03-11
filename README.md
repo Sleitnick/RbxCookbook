@@ -4,12 +4,27 @@ Feel free to submit a pull request with your own contributions!
 
 ### Snippets
 
+ - [AngleBetween.lua](#anglebetween)
  - [CreateSignal.lua](#createsignal)
  - [CylinderTerrain.lua](#cylinderterrain)
  - [LinearInterpolation.lua](#linearinterpolation)
  - [Map.lua](#map)
  - [ModelCFramer.lua](#modelcframer)
  - [RoundNumbers.lua](#roundnumbers)
+
+### AngleBetween
+[`AngleBetween.lua`](src/AngleBetween.lua)
+
+```lua
+-- Find angle between two vectors:
+
+local function AngleBetween(vectorA, vectorB)
+	return math.acos(math.clamp(vectorA.Unit:Dot(vectorB.Unit), -1, 1))
+end
+```
+
+----------
+
 
 ### CreateSignal
 [`CreateSignal.lua`](src/CreateSignal.lua)
