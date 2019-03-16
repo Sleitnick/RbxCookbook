@@ -1,4 +1,4 @@
--- Allows for linear interpolation between two RGB colors using a specified Gamma value.
+-- Allows for linear interpolation between two colors using a specified Gamma value.
 
 -- Utility function to apply a power to Color3
 function PowColor3(Color, Pow)
