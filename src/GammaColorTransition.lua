@@ -5,7 +5,7 @@ function PowColor3(Color, Pow)
     return Color3.new(math.pow(Color.r, Pow), math.pow(Color.g, Pow), math.pow(Color.b, Pow))
 end
 
--- Interpolate between 'ColorA' and 'ColorB' by 'Frac' percentage with an optional 'Gamma'. 
+-- Interpolate between 'ColorA' and 'ColorB' by 'Frac' percentage with an optional 'Gamma' value. 
 -- Typical gamma values range from 1.8 to 2.2. The default value is 2.0.
 function LerpColor(ColorA, ColorB, Frac, Gamma)
     local Gamma = Gamma or 2.0
