@@ -69,7 +69,7 @@ end
 ```lua
 -- Make cylinder terrain
 
--- DrawCylinder(radius, depth, material)
+-- DrawCylinder(radius, depth, depthOffset, material, overrideExisting)
 
 
 local RESOLUTION = 4
