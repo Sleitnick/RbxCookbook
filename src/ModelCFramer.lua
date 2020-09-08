@@ -1,22 +1,22 @@
 -- SetPrimaryPartCFrame but avoids float errors via caching
 
--- ExampleSetterFunction = ModelCFramer(workspace:WaitForChild("Model"))
+-- ExampleSetterFunction = ModelCFramer(workspace.Model)
 -- ExampleSetterFunction(CFrame.new(0, 5, 0))
 
 
-local function ModelCFramer(Model)
-	local Primary = Model.PrimaryPart or error("Model has no PrimaryPart")
-	local PrimaryCF = Primary.CFrame
-	local Cache = {}
-	for _, Desc in next, Model:GetDescendants() do
-		if Desc ~= Primary and Desc:IsA("BasePart") then
-			Cache[Desc] = PrimaryCF:toObjectSpace(Desc.CFrame)
+local function ModelCFramer(model)
+	local primary = model.PrimaryPart
+	local primaryCf = primary.CFrame
+	local cache = {}
+	for _,child in ipairs(model:GetDescendants()) do
+		if (child:IsA("BasePart") and child ~= primary) then
+			cache[child] = primaryCf:ToObjectSpace(child.CFrame)
 		end
 	end
-	return function(DesiredCFrame)
-		Primary.CFrame = DesiredCFrame
-		for Part, Offset in next, Cache do
-			Part.CFrame = DesiredCFrame * Offset
+	return function(desiredCf)
+		primary.CFrame = desiredCf
+		for part,offset in pairs(cache) do
+			part.CFrame = desiredCf * offset
 		end
 	end
 end

@@ -12,7 +12,7 @@ link_dir = "src/"
 readme_src = ["# RbxCookbook\n", "Feel free to submit a pull request with your own contributions!\n"]
 
 # Get source files:
-(_, _, filenames) = walk(src_dir).next()
+(_, _, filenames) = next(walk(src_dir))
 
 def get_filename_without_ext(filename):
 	dot = filename.rfind(".")
@@ -28,7 +28,7 @@ for filename in filenames:
 	anchor_name = "".join(e for e in anchor_name if e.isalnum()).lower()
 	readme_src.append(" - [" + filename + "](#" + anchor_name + ")")
 
-readme_src.append("");
+readme_src.append("")
 
 # Collect source code:
 first = True

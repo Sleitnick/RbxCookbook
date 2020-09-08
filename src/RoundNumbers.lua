@@ -1,5 +1,5 @@
 -- Round 'x' to the nearest 'mult'
 
-function Round(x, mult)
-	return math.floor((x / mult) + 0.5) * mult
+local function Round(x, mult)
+	return math.round(x / mult) * mult
 end
