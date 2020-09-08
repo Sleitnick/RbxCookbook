@@ -32,18 +32,17 @@ end
 -- Allows for linear interpolation between two colors using a specified Gamma value.
 
 -- Utility function to apply a power to Color3
-function PowColor3(Color, Pow)
-    return Color3.new(math.pow(Color.r, Pow), math.pow(Color.g, Pow), math.pow(Color.b, Pow))
+local function PowColor3(color, pow)
+    return Color3.new(math.pow(color.R, pow), math.pow(color.G, pow), math.pow(color.B, pow))
 end
 
 -- Interpolate between 'ColorA' and 'ColorB' by 'Frac' percentage with an optional 'Gamma' value. 
 -- Typical gamma values range from 1.8 to 2.2. The default value is 2.0.
-function LerpColor(ColorA, ColorB, Frac, Gamma)
-    local Gamma = Gamma or 2.0
-    
-    local CA = PowColor3(ColorA, Gamma)
-    local CB = PowColor3(ColorB, Gamma)
-    return PowColor3(CA:lerp(CB, Frac), 1/Gamma)
+local function LerpColor(colorA, colorB, frac, gamma)
+    gamma = (gamma or 2.0)
+    local ca = PowColor3(colorA, gamma)
+    local cb = PowColor3(colorB, gamma)
+    return PowColor3(ca:Lerp(cb, frac), 1 / gamma)
 end
 
 ```
