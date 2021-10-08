@@ -116,7 +116,7 @@ end
 [`Reflection.lua`](src/Reflection.lua)
 
 ```lua
--- Finding reflection vector for an incident vector
+-- Finding the reflection vector for an incident vector
 -- Arguments made for raycast [Origin, RaycastResult.Position, RaycastResult.Normal]
 
 local function Reflection(origin : Vector3,hitpos : Vector3,normal : Vector3)
