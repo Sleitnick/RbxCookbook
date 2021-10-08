@@ -9,6 +9,7 @@ Feel free to submit a pull request with your own contributions!
  - [LinearInterpolation.lua](#linearinterpolation)
  - [Map.lua](#map)
  - [ModelCFramer.lua](#modelcframer)
+ - [Reflection.lua](#reflection)
  - [RoundNumbers.lua](#roundnumbers)
 
 ### AngleBetween
@@ -106,6 +107,21 @@ local function ModelCFramer(model)
 	end
 end
 
+```
+
+----------
+
+
+### Reflection
+[`Reflection.lua`](src/Reflection.lua)
+
+```lua
+-- Finding reflection vector for an incident vector
+-- Arguments made for raycast [Origin, RaycastResult.Position, RaycastResult.Normal]
+
+local function Reflection(origin : Vector3,hitpos : Vector3,normal : Vector3)
+    return ((hitpos - origin) - 2*((hitpos - origin):Dot(normal) * normal))
+end
 ```
 
 ----------
