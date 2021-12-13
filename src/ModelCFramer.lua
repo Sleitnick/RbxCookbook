@@ -4,7 +4,7 @@
 -- ExampleSetterFunction(CFrame.new(0, 5, 0))
 
 
-local function ModelCFramer(model)
+local function ModelCFramer(model: Model): (cframe: CFrame) -> nil
 	local primary = model.PrimaryPart
 	local primaryCf = primary.CFrame
 	local cache = {}
@@ -13,7 +13,7 @@ local function ModelCFramer(model)
 			cache[child] = primaryCf:ToObjectSpace(child.CFrame)
 		end
 	end
-	return function(desiredCf)
+	return function(desiredCf: CFrame)
 		primary.CFrame = desiredCf
 		for part,offset in pairs(cache) do
 			part.CFrame = desiredCf * offset

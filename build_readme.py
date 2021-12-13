@@ -43,7 +43,7 @@ for filename in filenames:
 		else:
 			first = False
 		readme_src.append("### " + name + "\n[`" + filename + "`](" + src_file_link + ")\n")
-		readme_src.append("```lua\n" + source + "\n```\n")
+		readme_src.append("```lua\n" + source + "```\n")
 
 # Write readme file:
 with open("README.md", "w") as readme_file:

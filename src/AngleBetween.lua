@@ -1,5 +1,5 @@
 -- Find angle between two vectors:
 
-local function AngleBetween(vectorA, vectorB)
-	return math.acos(math.clamp(vectorA.Unit:Dot(vectorB.Unit), -1, 1))
+local function AngleBetween(vectorA: Vector3, vectorB: Vector3): number
+	return math.atan2(vectorA:Cross(vectorB).Magnitude, vectorA:Dot(vectorB))
 end
